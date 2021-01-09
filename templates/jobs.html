@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block head %} 
+<title>Jobs</title>
+{% endblock%}
+
+{% block body %} 
+<h1> All Jobs</h1>
+
+    {% for job in jobs %}
+        <h2>{{ job.title }}</h2>
+        <p>{{ job.salary }}</p>
+
+        {% if job.security %}
+            <p>Clearance: {{ job.security }}</p>
+        {% else %}
+            <p>Clearance: None</p>
+        {% endif %}
+
+    {% endfor %}
+    
+{% endblock %}
