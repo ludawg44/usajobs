@@ -27,19 +27,15 @@ CREATE TABLE IF NOT EXISTS locations(
     latitude DECIMAL);
 
 CREATE TABLE IF NOT EXISTS applications(
-    applications_id  serial PRIMARY KEY,
+    id serial PRIMARY KEY,
     position_id VARCHAR(255),
     publication_start_date VARCHAR(255),
     application_close_date VARCHAR(255));
 
 CREATE TABLE IF NOT EXISTS terms(
     id serial PRIMARY KEY,
-    applications_id INT,
+    position_id VARCHAR(255),
     travel_percentages VARCHAR(255),
     position_schedule_name CHAR(255),
     position_offering_type_name CHAR(255),
-    security_clearance VARCHAR(255)
-    PRIMARY KEY (id),
-    CONSTRAINT fk_applications
-        FOREIGN KEY(applications_id)
-            REFERENCES applications(applications_id));
+    security_clearance VARCHAR(255));

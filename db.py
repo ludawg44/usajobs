@@ -36,7 +36,8 @@ def drop_tables(table_names, conn, cur):
         drop_records(table_name, conn, cur)
 
 def drop_records(table_name, conn, cur):
-    cur.execute(f"DROP {table_name} [IF EXISTS];")
+    cur.execute(f"DELETE FROM {table_name};")
+    conn.commit()
 
 def find(Class, id, cur):
     sql_str = f"SELECT * FROM {Class.__table__} WHERE id = %s"
@@ -95,8 +96,8 @@ def values(obj):
         if attr in position_attrs.keys()
     ]
 
-# Close the cursor
-cur.close()
+# # Close the cursor
+# cur.close()
 
-# Close the connection
-conn.close()
+# # Close the connection
+# conn.close()
